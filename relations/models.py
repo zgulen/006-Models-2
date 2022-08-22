@@ -1,3 +1,4 @@
+from tkinter import CASCADE
 from django.db import models
 
 class Creator(models.Model):
@@ -14,3 +15,12 @@ class Language(models.Model):
 
     def __str__(self):
         return f"{self.name} - {self.creator}"
+    
+    
+class Framework(models.Model):
+    name = models.CharField(max_length=50)
+    Language = models.ForeignKey(Language, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return f"{self.name} {self.Language}"
+    
